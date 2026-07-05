@@ -1,200 +1,393 @@
 # IsraelOS Product Blueprint
 
-**Project:** IsraelOS
+Version: 2.0
 
-**Version:** 1.0.0
+Status: Draft
 
-**Status:** Draft
+---
 
-**Author:** Israel Jan
+# Product Name
 
-**Started:** July 2026
+IsraelOS
 
-**Last Updated:** July 2026
+---
 
-## Table of Contents
+# Tagline
 
-1. Product Vision
+**Build. Learn. Lead.**
 
-2. Mission
+---
 
-3. Vision
+# Vision
 
-4. Core Principles
+To become the intelligent personal operating system that helps ambitious professionals organize every aspect of their life, work, businesses, learning, finances, and long-term goals from one place.
 
-5. MVP Scope
+---
 
-6. Success Metrics
+# Mission
 
-7. Technology Stack
+IsraelOS empowers people to manage everything that matters—from projects and businesses to knowledge, goals, documents, finances, and AI assistance—in one unified platform.
 
-8. Development Workflow
+---
 
-9. Project Organization
+# Problem Statement
 
-10. Future Vision
+Modern professionals use dozens of disconnected applications:
 
-11. Milestones
+- Notes
+- Calendar
+- Tasks
+- Project Management
+- Documents
+- Finance
+- Learning
+- AI
+- CRM
 
-    ## Problem Statement
+This fragmentation creates unnecessary complexity, duplicated work, and poor decision making.
 
-Professionals often manage their work across many disconnected tools:
+IsraelOS solves this by becoming one intelligent operating system where everything works together.
 
-- Notion
+---
 
-- Trello
+# Target Audience
 
-- Google Calendar
+Initially:
 
-- Google Drive
+- Israel Jan
 
-- GitHub
+Eventually:
 
-- Excel
+- Freelancers
+- Entrepreneurs
+- Consultants
+- Architects
+- Developers
+- Students
+- Small Business Owners
+- Professionals
 
-- CRM software
+---
 
-- Learning platforms
+# Product Philosophy
 
-This fragmentation makes it difficult to understand priorities, measure progress, and maintain consistency.
+IsraelOS is not simply another productivity application.
 
-IsraelOS aims to unify these areas into one intelligent platform.
+It is a personal operating system.
+
+Everything inside IsraelOS should help users organize their:
+
+- Work
+- Businesses
+- Learning
+- Knowledge
+- Finances
+- Goals
+- Daily Life
+
+---
+
+# Core Principles
+
+## Simplicity
+
+Every feature should feel easy to understand.
+
+---
+
+## Clarity
+
+Information should always be organized and searchable.
+
+---
+
+## Intelligence
+
+AI should assist users rather than replace them.
+
+---
+
+## Automation
+
+Reduce repetitive work wherever possible.
+
+---
+
+## Growth
+
+IsraelOS should help users become more productive every month.
+
+---
+
+# Core Modules (MVP)
+
+## Dashboard
+
+The central command center.
+
+Contains:
+
+- Daily Briefing
+- AI Summary
+- Recent Activity
+- Progress
+- Notifications
+
+---
+
+## Workspace
+
+Current work.
+
+Recent files.
+
+Open sessions.
+
+Quick access.
+
+---
+
+## Projects
+
+Manage personal and professional projects.
+
+Examples:
+
+- IsraelOS
+- ZariQ
+- Portfolio
+- Client Websites
+
+---
+
+## Businesses
+
+Manage multiple businesses from one place.
+
+Examples:
+
+- ZariQ
+- Marisel Hub
+- Architecture Studio
+- Freelancing
+
+---
+
+## Clients
+
+Client management.
+
+Projects.
+
+Invoices.
+
+Communication.
+
+Documents.
+
+---
+
+## Finance
+
+Income
+
+Expenses
+
+Budgets
+
+Invoices
+
+Subscriptions
+
+Reports
+
+---
+
+## Calendar
+
+Meetings
+
+Deadlines
+
+Events
+
+Reminders
+
+---
+
+## Tasks
+
+Task management.
+
+Daily planning.
+
+Kanban.
+
+Priorities.
+
+Recurring tasks.
+
+---
 
 ## Goals
 
-### Short-Term
+Annual goals.
 
-- Build MVP
+Monthly goals.
 
-- Track daily productivity
+Weekly goals.
 
-- Improve personal discipline
+Daily goals.
 
-### Mid-Term
+---
 
-- Replace multiple productivity tools
+## Learning
 
-- Improve client management
+Courses
 
-- Track learning progress
+Books
 
-### Long-Term
+Certificates
 
-- Launch IsraelOS as a SaaS
+Progress
 
-- Integrate AI
+Study Notes
 
-- Support multiple users
+---
 
+## Knowledge
 
-  ## Non-Goals
+Personal knowledge base.
 
-IsraelOS is NOT intended to:
+Ideas.
 
-- Replace Microsoft Office
+Research.
 
-- Replace professional accounting software
+Meeting Notes.
 
-- Become a social network
+Architecture Decisions.
 
-- Become a messaging application
+---
 
-These features are intentionally out of scope.
+## Ideas
 
-## User Personas
+Capture and develop:
 
-### Primary User
+- Startup Ideas
+- Business Ideas
+- Product Ideas
+- Features
+- Brainstorms
 
-Freelancers
+---
 
-Consultants
+## Documents
 
-Developers
+Contracts
 
-Business Owners
+PDFs
 
-Students
+Architecture Drawings
 
-### Future Users
+Invoices
 
-Property Managers
+Certificates
 
-Agencies
+Templates
 
-Remote Teams
+---
 
-Startups
+## AI Assistant
 
-Core Modules
+Personal AI companion.
 
-Dashboard
+Examples:
 
-Planner
+- Plan my day.
+- Summarize my work.
+- Prioritize my tasks.
+- Explain this concept.
+- Draft an email.
+- Review my goals.
 
-CRM
+---
 
-Finance
+## Settings
 
-Learning
+Profile
 
-Projects
+Appearance
 
-Calendar
+Security
 
-Journal
+Notifications
 
-AI
+Integrations
 
-Settings
+API Keys
 
-Version 1.0
+---
 
-Authentication
+# Navigation
 
-Dashboard
+- Dashboard
+- Workspace
+- Projects
+- Businesses
+- Clients
+- Finance
+- Calendar
+- Tasks
+- Goals
+- Learning
+- Knowledge
+- Ideas
+- Documents
+- AI Assistant
+- Settings
 
-Tasks
+---
 
-Planner
+# Relationship with ZariQ
 
-Version 1.1
+IsraelOS and ZariQ are separate products.
 
-CRM
+IsraelOS is the personal operating system.
 
-Calendar
+ZariQ is one of the businesses managed inside IsraelOS.
 
-Journal
+Example:
 
-Version 1.2
+IsraelOS
 
-Learning
+└── Businesses
 
-Finance
+    └── ZariQ
 
-Architecture
+        ├── Properties
 
-Version 2.0
+        ├── Tenants
 
-AI Coach
+        ├── Leases
 
-Automation
+        ├── Maintenance
 
-Analytics
+        └── Marketplace
 
-Version 1 is complete when:
+---
 
-A user can sign in securely.
+# Long-Term Vision
 
-A user can create and manage tasks.
+IsraelOS should become the operating system users open every morning.
 
-A user can track habits.
+Instead of opening multiple applications, users should manage their work, businesses, learning, knowledge, finances, and goals from one intelligent platform.
 
-A user can manage clients.
+---
 
-A user can track finances.
+# Development Principle
 
-A user can monitor learning progress.
+Every feature added to IsraelOS must answer one question:
 
-The application is fully deployed.
+**"Does this help users organize their life, work, businesses, knowledge, or growth?"**
 
-Documentation is complete.
+If the answer is **No**, the feature probably belongs in another product.

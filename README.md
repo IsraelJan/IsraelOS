@@ -1,36 +1,173 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IsraelOS
 
-## Getting Started
+> **Build. Learn. Lead.**
 
-First, run the development server:
+IsraelOS is an intelligent Personal Operating System designed to help ambitious professionals organize every aspect of their life, work, businesses, learning, finances, knowledge, and long-term goals from one unified platform.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Build Status
+
+Version 0.1.0
+
+Next.js 16
+
+TypeScript
+
+MIT License 
+
+Vercel
+
+---
+
+# Vision
+
+IsraelOS exists to eliminate the need for dozens of disconnected productivity applications.
+
+Instead of switching between task managers, note-taking apps, calendars, project management software, AI tools, and business software, IsraelOS brings everything together into one intelligent operating system.
+
+---
+
+# Mission
+
+Our mission is to help people:
+
+- 🏗 Build
+- 📚 Learn
+- 🗂 Organize
+- 📈 Grow
+- 🌍 Lead
+
+through one unified platform.
+
+---
+
+# Core Modules
+
+- 🏠 Dashboard
+- 🗂 Workspace
+- 📁 Projects
+- 🏢 Businesses
+- 👥 Clients
+- 💰 Finance
+- 📅 Calendar
+- ✅ Tasks
+- 🎯 Goals
+- 📚 Learning
+- 📖 Knowledge
+- 💡 Ideas
+- 📄 Documents
+- 🤖 AI Assistant
+- ⚙ Settings
+
+---
+
+# Technology Stack
+
+## Frontend
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Lucide React
+
+## Backend
+
+- Supabase
+- PostgreSQL
+- Supabase Auth
+- Supabase Storage
+- Edge Functions
+
+## Deployment
+
+- Vercel
+
+---
+
+# Project Structure
+
+```text
+app/
+components/
+docs/
+hooks/
+lib/
+public/
+services/
+types/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Documentation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Project documentation can be found in the **docs** directory.
 
-## Learn More
+- Product Blueprint
+- Vision
+- Software Architecture
+- Domain Model
+- Database Design
+- Coding Standards
+- Roadmap
+- ADRs
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Development Status
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Current Version
 
-## Deploy on Vercel
+```text
+v0.1.0
+Foundation
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Current Progress
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- ✅ Project Setup
+- ✅ GitHub Integration
+- ✅ Vercel Deployment
+- ✅ Documentation
+- 🔄 Dashboard Development
+- ⏳ Authentication
+- ⏳ Database Integration
+
+---
+
+# Product Philosophy
+
+IsraelOS is more than a productivity application.
+
+It is a Personal Operating System.
+
+Every feature should help users organize one or more of the following:
+
+- Work
+- Businesses
+- Projects
+- Learning
+- Knowledge
+- Documents
+- Finance
+- Goals
+- AI Collaboration
+
+---
+
+# Long-Term Vision
+
+IsraelOS should become the first application users open every morning and the last application they close every evening.
+
+It should become the central hub for work, learning, planning, decision making, and personal growth.
+
+---
+
+# License
+
+This project is currently under active development.
+
+Copyright © 2026 Israel Jan Otieno.
+
+All rights reserved.

@@ -1,287 +1,393 @@
 # 🧩 IsraelOS Domain Model
 
-**Project:** IsraelOS
-
-**Version:** 1.0.0
-
-**Status:** Draft
-
-**Author:** Israel Jan
-
-**Created:** July 2026
+**Version:** 2.0  
+**Status:** Draft  
+**Author:** Israel Jan Otieno  
+**Date Created:** July 3, 2026  
+**Last Updated:** July 5, 2026
 
 ---
 
 # Table of Contents
 
 1. Overview
-2. Core Domains
-3. Domain Responsibilities
-4. Domain Relationships
-5. Future Domains
+2. Purpose
+3. Domain Philosophy
+4. Core Domain Entities
+5. Entity Relationships
+6. Domain Boundaries
+7. Module Ownership
+8. Future Domain Expansion
+9. Domain Principles
+10. Summary
 
 ---
 
 # 1. Overview
 
-IsraelOS is organized into independent business domains.
+The Domain Model defines the core business concepts of IsraelOS.
 
-Each domain owns its own data, business logic, and user interface.
+Rather than focusing on the database or user interface, the domain model describes the real-world objects that IsraelOS manages and how they relate to one another.
 
-This modular approach improves scalability, maintainability, and code organization.
+The domain serves as the heart of the application and drives every feature, workflow, and data model.
 
 ---
 
-# 2. Core Domains
+# 2. Purpose
 
-The MVP consists of the following domains:
+The purpose of the domain model is to establish a shared understanding of the business concepts that power IsraelOS.
+
+It ensures that every developer, designer, and future AI agent speaks the same language when building the platform.
+
+---
+
+# 3. Domain Philosophy
+
+IsraelOS is a Personal Operating System.
+
+Everything inside the platform should help users organize one or more of the following:
+
+- Work
+- Businesses
+- Projects
+- Clients
+- Tasks
+- Knowledge
+- Learning
+- Goals
+- Documents
+- Finances
+- Ideas
+
+If a feature does not support one of these areas, it should be carefully evaluated before becoming part of the platform.
+
+---
+
+# 4. Core Domain Entities
+
+## User
+
+Represents the owner of the operating system.
+
+Responsibilities:
 
 - Authentication
-- Dashboard
-- Planner
-- CRM
-- Finance
-- Learning
-- Journal
-- Calendar
-- Projects
-- AI Coach
-- Settings
-
----
-
-# 3. Domain Responsibilities
-
-## Authentication
-
-Responsible for:
-
-- User Registration
-- Login
-- Logout
-- Password Reset
-- User Sessions
-- Security
-
-Owns:
-
-- Users
-- Profiles
-- Settings
-
----
-
-## Dashboard
-
-Responsible for:
-
-- Daily Overview
-- Productivity Summary
-- Quick Actions
-- Widgets
-- Analytics
-
-Displays information from every other domain.
-
-Owns:
-
-No database tables.
-
----
-
-## Planner
-
-Responsible for:
-
-- Tasks
-- Goals
-- Habits
-- Daily Planning
-- Weekly Planning
-- Monthly Planning
-
-Owns:
-
-- Tasks
-- Goals
-- Habits
-
----
-
-## CRM
-
-Responsible for:
-
-- Clients
-- Leads
-- Meetings
-- Notes
-
-Owns:
-
-- Clients
-- Leads
-- Meetings
-- CRM Notes
-
----
-
-## Finance
-
-Responsible for:
-
-- Income
-- Expenses
-- Budgets
-- Savings Goals
-
-Owns:
-
-- Income
-- Expenses
-- Budgets
-
----
-
-## Learning
-
-Responsible for:
-
-- Courses
-- Learning Sessions
-- Books
-- Certifications
-- Notes
-
-Owns:
-
-- Courses
-- Learning Sessions
-- Certifications
-
----
-
-## Journal
-
-Responsible for:
-
-- Daily Journal
-- Weekly Review
-- Reflection
-- Gratitude
-
-Owns:
-
-- Journal Entries
-
----
-
-## Calendar
-
-Responsible for:
-
-- Events
-- Reminders
-- Deadlines
-
-Owns:
-
-- Calendar Events
-
----
-
-## Projects
-
-Responsible for:
-
-- Personal Projects
-- Client Projects
-- Milestones
-
-Owns:
-
-- Projects
-
----
-
-## AI Coach
-
-Responsible for:
-
-- Productivity Insights
-- Recommendations
-- Daily Briefings
-
-Owns:
-
-- AI Conversations
-- AI Recommendations
-
----
-
-## Settings
-
-Responsible for:
-
 - Preferences
-- Theme
+- Profile
+- Ownership of data
+
+---
+
+## Workspace
+
+Represents the user's active working environment.
+
+Examples:
+
+- Personal
+- Business
+- Study
+- Research
+
+A workspace groups related information together.
+
+---
+
+## Project
+
+Represents any initiative with a clear objective.
+
+Examples:
+
+- IsraelOS
+- ZariQ
+- Portfolio Website
+- Architecture Design
+
+Projects may contain:
+
+- Tasks
+- Documents
+- Notes
+- Goals
+- AI conversations
+
+---
+
+## Business
+
+Represents a company or venture.
+
+Examples:
+
+- Marisel Hub
+- ZariQ
+- Architecture Studio
+- Freelance Services
+
+Businesses own:
+
+- Clients
+- Projects
+- Finances
+- Documents
+
+---
+
+## Client
+
+Represents an individual or organization receiving services.
+
+Examples:
+
+- Contento
+- Real Tasking
+- InvestIn
+- Tracy King
+
+A client may have:
+
+- Multiple projects
+- Documents
+- Invoices
+- Meetings
+
+---
+
+## Task
+
+Represents a unit of work.
+
+Examples:
+
+- Design dashboard
+- Send proposal
+- Deploy website
+
+Tasks belong to projects or workspaces.
+
+---
+
+## Goal
+
+Represents a desired outcome.
+
+Examples:
+
+- Learn Next.js
+- Reach $10,000 Monthly Revenue
+- Launch IsraelOS MVP
+
+Goals are supported by projects and tasks.
+
+---
+
+## Learning Item
+
+Represents structured learning.
+
+Examples:
+
+- Course
+- Book
+- Certification
+- Tutorial
+
+Tracks:
+
+- Progress
+- Notes
+- Completion
+
+---
+
+## Knowledge Note
+
+Represents permanent knowledge.
+
+Examples:
+
+- Research
+- Meeting Notes
+- AI Summaries
+- Architecture Decisions
+
+Knowledge should be searchable.
+
+---
+
+## Idea
+
+Represents an opportunity or concept.
+
+Examples:
+
+- Startup Idea
+- Feature Request
+- Product Improvement
+- Business Opportunity
+
+Ideas may later become projects.
+
+---
+
+## Document
+
+Represents stored files.
+
+Examples:
+
+- Contracts
+- Drawings
+- PDFs
+- Certificates
+- Invoices
+
+Documents can belong to projects, businesses, or clients.
+
+---
+
+## Calendar Event
+
+Represents scheduled activities.
+
+Examples:
+
+- Meeting
+- Deadline
+- Reminder
+- Appointment
+
+---
+
+## AI Conversation
+
+Represents conversations with the AI Assistant.
+
+Examples:
+
+- Planning
+- Research
+- Coding
+- Brainstorming
+
+AI conversations may reference projects, tasks, documents, or knowledge notes.
+
+---
+
+# 5. Entity Relationships
+
+User
+
+├── Workspaces
+
+├── Businesses
+
+│ ├── Clients
+
+│ ├── Projects
+
+│ └── Documents
+
+├── Projects
+
+│ ├── Tasks
+
+│ ├── Goals
+
+│ ├── Documents
+
+│ └── AI Conversations
+
+├── Learning Items
+
+├── Knowledge Notes
+
+├── Ideas
+
+├── Calendar Events
+
+└── Finance Records
+
+---
+
+# 6. Domain Boundaries
+
+IsraelOS manages:
+
+- Personal productivity
+- Business management
+- Knowledge management
+- Learning
+- Finance
+- AI assistance
+
+IsraelOS does **not** directly manage:
+
+- Rental properties
+- Tenants
+- Property maintenance
+- Property listings
+
+Those belong to ZariQ.
+
+---
+
+# 7. Module Ownership
+
+| Module | Primary Entity |
+|----------|----------------|
+| Dashboard | User |
+| Workspace | Workspace |
+| Projects | Project |
+| Businesses | Business |
+| Clients | Client |
+| Finance | Finance Record |
+| Calendar | Calendar Event |
+| Tasks | Task |
+| Goals | Goal |
+| Learning | Learning Item |
+| Knowledge | Knowledge Note |
+| Ideas | Idea |
+| Documents | Document |
+| AI Assistant | AI Conversation |
+
+---
+
+# 8. Future Domain Expansion
+
+Future versions may introduce:
+
+- Teams
+- Organizations
 - Notifications
-- Timezone
+- Workflows
+- Habits
+- Time Tracking
+- Journals
+- Public APIs
+- Plugins
 
-Owns:
-
-- User Settings
-
----
-
-# 4. Domain Relationships
-
-Dashboard
-
-↓
-
-Planner
-
-↓
-
-Projects
-
-↓
-
-CRM
-
-↓
-
-Finance
-
-↓
-
-Learning
-
-↓
-
-Journal
-
-↓
-
-Calendar
-
-↓
-
-AI Coach
-
-Authentication supports every domain.
+These should extend the existing domain without breaking the core principles.
 
 ---
 
-# 5. Future Domains
+# 9. Domain Principles
 
-Future versions may include:
+Every domain entity should:
 
-- Team Collaboration
-- Organization Management
-- Marketplace
-- Plugin System
-- Public API
-- Mobile Sync
-- Integrations
+- Have a single responsibility.
+- Represent a real-world concept.
+- Be reusable across modules.
+- Be independent from the user interface.
+- Support future scalability.
+
+---
+
+# 10. Summary
+
+The IsraelOS Domain Model defines the language of the platform.
+
+It provides a stable foundation that guides the database design, application logic, API development, AI integration, and future expansion of the operating system.
+
+Every future feature should be built around these core domain entities.

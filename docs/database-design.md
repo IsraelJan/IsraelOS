@@ -1,15 +1,9 @@
 # 🗄️ IsraelOS Database Design
 
-**Project:** IsraelOS
-
-**Version:** 1.0.0
-
-**Status:** Draft
-
-**Author:** Israel Jan
-
-**Created:** July 2026
-
+**Version:** 2.0  
+**Status:** Draft  
+**Author:** Israel Jan Otieno  
+**Date Created:** July 2026  
 **Last Updated:** July 2026
 
 ---
@@ -19,29 +13,23 @@
 1. Overview
 2. Design Principles
 3. Database Technology
-4. Core Entities
+4. Core Tables
 5. Entity Relationships
-6. Table Definitions
-7. Row-Level Security (RLS)
-8. Indexing Strategy
+6. Data Ownership
+7. Security Model
+8. File Storage
 9. Future Database Expansion
+10. Summary
 
 ---
 
 # 1. Overview
 
-IsraelOS uses a relational database to store and organize application data.
+The IsraelOS database is designed to support a modern, scalable Personal Operating System.
 
-The database is designed to support:
+The database stores information related to users, projects, businesses, learning, knowledge, finances, documents, AI interactions, and productivity.
 
-- Multi-user architecture
-- High performance
-- Data integrity
-- Scalability
-- Security
-- Maintainability
-
-Every record belongs to a user and is protected using Row-Level Security (RLS).
+The design prioritizes simplicity, scalability, security, and maintainability.
 
 ---
 
@@ -49,406 +37,466 @@ Every record belongs to a user and is protected using Row-Level Security (RLS).
 
 The database follows these principles:
 
-- Normalize data to reduce duplication.
-- Every table has a primary key.
-- Relationships use foreign keys.
-- Use UUIDs as identifiers.
-- Store timestamps for auditing.
-- Design for future scalability.
-- Enforce security using Row-Level Security (RLS).
+- Single source of truth
+- Normalize data where appropriate
+- Avoid unnecessary duplication
+- Secure by default
+- Support future scalability
+- AI-ready architecture
+- User-centric ownership
 
 ---
 
 # 3. Database Technology
 
-Database: PostgreSQL
+Backend Platform
 
-Backend Platform: Supabase
+- Supabase
 
-Authentication: Supabase Auth
+Database Engine
 
-Primary Key Type: UUID
+- PostgreSQL
 
-Time Zone: UTC
+Authentication
+
+- Supabase Auth
+
+File Storage
+
+- Supabase Storage
+
+Real-time Updates
+
+- Supabase Realtime
+
+Server Functions
+
+- Supabase Edge Functions
 
 ---
 
-# 4. Core Entities
+# 4. Core Tables
 
-The initial MVP consists of the following entities:
+## users
 
-## User Management
+Stores account information.
 
-- Users
-- Profiles
+Examples:
+
+- Profile
+- Preferences
 - Settings
 
 ---
 
-## Productivity
+## workspaces
 
-- Tasks
-- Habits
-- Goals
+Represents user workspaces.
+
+Examples:
+
+- Personal
+- Business
+- Study
+
+Relationships
+
+- User → Many Workspaces
+
+---
+
+## businesses
+
+Stores businesses managed by the user.
+
+Examples:
+
+- ZariQ
+- Marisel Hub
+- Architecture Studio
+
+Relationships
+
+- Workspace → Many Businesses
+
+---
+
+## projects
+
+Stores projects.
+
+Examples:
+
+- IsraelOS
+- Portfolio
+- Client Website
+
+Relationships
+
+- Business → Many Projects
+
+---
+
+## clients
+
+Stores client information.
+
+Relationships
+
+- Business → Many Clients
+
+---
+
+## tasks
+
+Stores tasks.
+
+Relationships
+
+- Project → Many Tasks
+
+---
+
+## goals
+
+Stores user goals.
+
+Relationships
+
+- Workspace → Many Goals
+
+---
+
+## calendar_events
+
+Stores meetings and reminders.
+
+Relationships
+
+- Workspace → Many Calendar Events
+
+---
+
+## learning_items
+
+Stores learning resources.
+
+Examples
+
+- Courses
+- Books
+- Certifications
+
+Relationships
+
+- User → Many Learning Items
+
+---
+
+## knowledge_notes
+
+Stores notes and knowledge.
+
+Examples
+
+- Research
+- Meeting Notes
+- Architecture Decisions
+
+Relationships
+
+- Workspace → Many Knowledge Notes
+
+---
+
+## ideas
+
+Stores business and product ideas.
+
+Relationships
+
+- Workspace → Many Ideas
+
+---
+
+## documents
+
+Stores uploaded documents.
+
+Examples
+
+- Contracts
+- PDFs
+- Drawings
+- Images
+
+Relationships
+
 - Projects
-
----
-
-## Business
-
+- Businesses
 - Clients
-- Leads
-- Meetings
-- Notes
 
 ---
 
-## Finance
+## ai_conversations
+
+Stores AI conversations.
+
+Relationships
+
+- User
+- Projects
+- Knowledge Notes
+
+---
+
+## finance_records
+
+Stores financial information.
+
+Examples
 
 - Income
 - Expenses
 - Budgets
+- Invoices
 
----
+Relationships
 
-## Learning
-
-- Learning Sessions
-- Courses
-- Resources
-- Certifications
-
----
-
-## Journal
-
-- Daily Journal
-- Weekly Reviews
-
----
-
-## Calendar
-
-- Events
-- Reminders
-
----
-
-## AI
-
-- AI Conversations
-- AI Recommendations
+- Business
+- Workspace
 
 ---
 
 # 5. Entity Relationships
 
-One User
+User
 
-├── Many Tasks
+│
 
-├── Many Habits
+├── Workspaces
 
-├── Many Goals
+│     ├── Projects
 
-├── Many Clients
+│     │      ├── Tasks
 
-├── Many Projects
+│     │      ├── Documents
 
-├── Many Meetings
+│     │      └── AI Conversations
 
-├── Many Journal Entries
+│
 
-├── Many Learning Sessions
+├── Businesses
 
-├── Many Income Records
+│      ├── Clients
 
-├── Many Expense Records
+│      ├── Finance Records
 
-└── Many Calendar Events
+│      └── Projects
 
-Every table references the authenticated user.
+│
 
----
+├── Goals
 
-# 6. Table Definitions
+├── Calendar Events
 
-## Users
+├── Learning Items
 
-Purpose:
+├── Knowledge Notes
 
-Stores authentication information.
+├── Ideas
 
-Managed by Supabase Auth.
-
----
-
-## Profiles
-
-Purpose:
-
-Stores user profile information.
-
-Fields:
-
-- id (UUID)
-- user_id
-- full_name
-- email
-- avatar_url
-- timezone
-- created_at
-- updated_at
+└── Documents
 
 ---
 
-## Tasks
+# 6. Data Ownership
 
-Purpose:
+Every record belongs to a user.
 
-Stores daily and long-term tasks.
+Examples
 
-Fields:
-
-- id
-- user_id
-- title
-- description
-- priority
-- status
-- due_date
-- completed_at
-- created_at
-- updated_at
-
----
-
-## Habits
-
-Purpose:
-
-Tracks recurring habits.
-
-Fields:
-
-- id
-- user_id
-- name
-- frequency
-- streak
-- target
-- created_at
-
----
-
-## Goals
-
-Purpose:
-
-Stores personal and business goals.
-
-Fields:
-
-- id
-- user_id
-- title
-- category
-- target_date
-- progress
-- status
-
----
-
-## Clients
-
-Purpose:
-
-Stores client information.
-
-Fields:
-
-- id
-- user_id
-- company_name
-- contact_name
-- email
-- phone
-- status
-- created_at
-
----
-
-## Leads
-
-Purpose:
-
-Tracks sales opportunities.
-
-Fields:
-
-- id
-- user_id
-- source
-- stage
-- estimated_value
-- next_follow_up
-
----
-
-## Meetings
-
-Purpose:
-
-Stores scheduled meetings.
-
-Fields:
-
-- id
-- client_id
-- meeting_date
-- location
-- notes
-
----
-
-## Income
-
-Purpose:
-
-Tracks revenue.
-
-Fields:
-
-- id
-- user_id
-- source
-- amount
-- category
-- payment_date
-
----
-
-## Expenses
-
-Purpose:
-
-Tracks spending.
-
-Fields:
-
-- id
-- user_id
-- category
-- amount
-- payment_date
-
----
-
-## Learning Sessions
-
-Purpose:
-
-Tracks learning progress.
-
-Fields:
-
-- id
-- user_id
-- topic
-- duration_minutes
-- completed
-- notes
-
----
-
-## Journal Entries
-
-Purpose:
-
-Stores reflections.
-
-Fields:
-
-- id
-- user_id
-- mood
-- gratitude
-- reflection
-- created_at
-
----
-
-## Calendar Events
-
-Purpose:
-
-Stores events and reminders.
-
-Fields:
-
-- id
-- user_id
-- title
-- start_time
-- end_time
-- event_type
-
----
-
-# 7. Row-Level Security (RLS)
-
-Every table will enforce Row-Level Security.
-
-Policy:
-
-A user can:
-
-- View their own records.
-- Create their own records.
-- Update their own records.
-- Delete their own records.
-
-A user cannot access another user's data.
-
----
-
-# 8. Indexing Strategy
-
-Indexes will be created on frequently queried fields.
-
-Examples:
+Task
 
 - user_id
-- due_date
-- status
-- created_at
-- meeting_date
-- payment_date
+- project_id
 
-This improves query performance as the application grows.
+Project
+
+- user_id
+- business_id
+
+Knowledge Note
+
+- user_id
+- workspace_id
+
+Goal
+
+- user_id
+- workspace_id
+
+This ownership model enables secure Row Level Security (RLS).
+
+---
+
+# 7. Security Model
+
+Authentication
+
+- Supabase Auth
+
+Authorization
+
+- Row Level Security (RLS)
+
+Policies
+
+Users can:
+
+✔ Read their own data
+
+✔ Create their own data
+
+✔ Update their own data
+
+✔ Delete their own data
+
+Users cannot access another user's information.
+
+---
+
+# 8. File Storage
+
+Files are stored using Supabase Storage.
+
+Examples
+
+- Documents
+- Images
+- Certificates
+- Drawings
+- PDFs
+
+Metadata is stored in PostgreSQL.
+
+Actual files remain in Storage Buckets.
 
 ---
 
 # 9. Future Database Expansion
 
-Future versions may introduce:
+Future versions may include:
 
 - Teams
 - Organizations
-- Shared Workspaces
+- Workflows
 - Notifications
-- File Attachments
+- Habits
+- Time Tracking
 - AI Memory
-- Plugin System
+- Plugins
+- Marketplace
 - Public API
-- Audit Logs
 
-The current database design should support these future enhancements with minimal structural changes.
+The current design allows these features to be added without major restructuring.
 
 ---
 
-# Conclusion
+# 10. Naming Conventions
 
-The IsraelOS database is designed to provide a secure, scalable, and maintainable foundation for all application features.
+Tables
 
-Every new module should integrate with this database design while maintaining consistency, performance, and data integrity.
+Use plural lowercase names.
+
+Examples
+
+users
+
+projects
+
+tasks
+
+documents
+
+Columns
+
+Use snake_case.
+
+Examples
+
+user_id
+
+created_at
+
+updated_at
+
+workspace_id
+
+business_id
+
+Primary Keys
+
+Use UUID.
+
+Examples
+
+id UUID PRIMARY KEY
+
+Foreign Keys
+
+Always reference the parent table.
+
+Examples
+
+project_id
+
+workspace_id
+
+business_id
+
+Indexes
+
+Create indexes on:
+
+- user_id
+- workspace_id
+- business_id
+- project_id
+- created_at
+
+to improve performance.
+
+---
+
+# 11. Backup Strategy
+
+The database should support:
+
+- Automatic backups
+- Point-in-time recovery
+- Disaster recovery
+- Version migration
+
+This protects user information and business continuity.
+
+---
+
+# 12. Summary
+
+The IsraelOS database is designed around the core philosophy of a Personal Operating System.
+
+Every table supports one or more of the platform's core modules:
+
+- Work
+- Businesses
+- Projects
+- Clients
+- Finance
+- Learning
+- Knowledge
+- AI
+- Documents
+- Personal Growth
+
+The design prioritizes security, scalability, maintainability, and future expansion while remaining simple enough for the MVP.

@@ -1,383 +1,329 @@
-# 🏗️ IsraelOS Software Architecture
+# IsraelOS Software Architecture
 
-**Project:** IsraelOS
+Version: 2.0
 
-**Version:** 1.0.0
-
-**Status:** Draft
-
-**Author:** Israel Jan
-
-**Created:** July 2026
-
-**Last Updated:** July 2026
+Status: Draft
 
 ---
 
-# Table of Contents
+# Overview
 
-1. Overview
-2. Architecture Goals
-3. System Architecture
-4. Technology Stack
-5. Application Layers
-6. Folder Structure
-7. Authentication Architecture
-8. Database Architecture
-9. State Management
-10. API Design
-11. Security
-12. Scalability
-13. Deployment Architecture
-14. Development Principles
-15. Future Architecture
+IsraelOS is a modern web application built using a layered architecture.
+
+The goal is to provide a scalable, maintainable, and intelligent platform that helps users organize their work, businesses, learning, finances, knowledge, and personal growth.
+
+The architecture emphasizes modularity, reusability, and AI-first design.
 
 ---
 
-# 1. Overview
+# Architecture Principles
 
-IsraelOS is a modern full-stack web application designed to help professionals manage every aspect of their work and personal growth from one platform.
+IsraelOS follows these principles:
 
-The application follows a modular architecture where each major feature (Dashboard, Planner, CRM, Finance, Learning, etc.) is developed independently while sharing a common design system and backend.
-
-The architecture is designed for:
-
+- Simplicity
 - Scalability
-- Maintainability
+- Reusability
 - Security
 - Performance
-- Reusability
+- AI-First
+- Mobile Friendly
+- Component Driven
 
 ---
 
-# 2. Architecture Goals
+# High-Level Architecture
 
-The architecture must satisfy the following goals:
+                    IsraelOS
 
-- Fast performance
-- Clean codebase
-- Modular features
-- Easy maintenance
-- Secure authentication
-- Responsive UI
-- Cloud deployment
-- Multi-user support
-- Reusable components
-
----
-
-# 3. High-Level System Architecture
-
-```
-                 Browser
+        ┌─────────────────────────────┐
+        │      Presentation Layer      │
+        └─────────────────────────────┘
                      │
                      ▼
-          Next.js Frontend (React)
-                     │
-      ┌──────────────┼──────────────┐
-      ▼              ▼              ▼
-  UI Components   Business Logic   API Routes
-      │              │              │
-      └──────────────┼──────────────┘
-                     ▼
-              Supabase Backend
-      ┌──────────────┼──────────────┐
-      ▼              ▼              ▼
- Authentication   PostgreSQL      Storage
+        ┌─────────────────────────────┐
+        │     Application Layer        │
+        └─────────────────────────────┘
                      │
                      ▼
-             User Data & Files
-```
+        ┌─────────────────────────────┐
+        │        Domain Layer          │
+        └─────────────────────────────┘
+                     │
+                     ▼
+        ┌─────────────────────────────┐
+        │         Data Layer           │
+        └─────────────────────────────┘
 
 ---
 
-# 4. Technology Stack
+# Technology Stack
 
-| Layer | Technology |
-|--------|------------|
-| Framework | Next.js |
-| Language | TypeScript |
-| Styling | Tailwind CSS |
-| UI Components | shadcn/ui |
-| Icons | Lucide React |
-| Backend | Supabase |
-| Database | PostgreSQL |
-| Authentication | Supabase Auth |
-| Validation | Zod |
-| Forms | React Hook Form |
-| State | Zustand |
-| Charts | Recharts |
-| Deployment | Vercel |
-| Version Control | GitHub |
-
----
-
-# 5. Application Layers
-
-IsraelOS follows a layered architecture.
-
-## Presentation Layer
-
-Responsible for:
-
-- User Interface
-- Pages
-- Components
-- Layouts
-
-Technology:
+## Frontend
 
 - Next.js
 - React
+- TypeScript
 - Tailwind CSS
+- shadcn/ui
+- Lucide React
 
 ---
 
-## Business Logic Layer
+## Backend
 
-Responsible for:
-
-- Task management
-- Calculations
-- Validation
-- Business rules
-- User workflows
+- Supabase
+- PostgreSQL
+- Supabase Auth
+- Supabase Storage
+- Supabase Edge Functions
 
 ---
 
-## Data Access Layer
+## Deployment
 
-Responsible for:
-
-- Reading data
-- Updating data
-- Database communication
-
-Uses:
-
-- Supabase Client
+- GitHub
+- Vercel
 
 ---
 
-## Database Layer
+# Folder Structure
 
-Responsible for storing:
+```
+app/
+components/
+hooks/
+lib/
+services/
+types/
+public/
+docs/
+```
 
-- Users
+---
+
+# Application Layers
+
+## Presentation Layer
+
+Responsible for everything the user sees.
+
+Examples:
+
+- Dashboard
+- Workspace
+- Projects
+- Businesses
+- Clients
+- Finance
+- Calendar
 - Tasks
 - Goals
-- Projects
-- Notes
-- Finance
-- CRM
-- Learning Progress
+- Learning
+- Knowledge
+- Ideas
+- Documents
+- AI Assistant
+- Settings
 
 ---
 
-# 6. Folder Structure
+## Application Layer
 
-```
-IsraelOS/
+Contains the business logic.
 
-├── app/
-├── components/
-├── features/
-│   ├── dashboard/
-│   ├── planner/
-│   ├── crm/
-│   ├── finance/
-│   ├── learning/
-│   ├── architecture/
-│   ├── habits/
-│   ├── journal/
-│   ├── calendar/
-│   └── ai/
-│
-├── lib/
-├── hooks/
-├── services/
-├── types/
-├── utils/
-├── docs/
-├── public/
-└── styles/
-```
+Responsibilities:
+
+- Validation
+- Services
+- Authentication
+- AI orchestration
+- Permissions
+- Workflows
 
 ---
 
-# 7. Authentication Architecture
+## Domain Layer
 
-Authentication is handled by Supabase Auth.
-
-Features:
-
-- Email & Password
-- Google Login (future)
-- Password Reset
-- Email Verification
-- Secure Sessions
-- Protected Routes
-
-Each user only accesses their own data.
-
----
-
-# 8. Database Architecture
-
-The application uses PostgreSQL.
+Represents the business concepts.
 
 Core entities include:
 
-- Users
-- Tasks
-- Habits
-- Goals
-- Clients
-- Leads
-- Meetings
-- Notes
-- Learning Sessions
-- Projects
-- Income
-- Expenses
-- Calendar Events
-
-Each record is linked to a specific user.
+- User
+- Workspace
+- Project
+- Business
+- Client
+- Task
+- Goal
+- Learning Item
+- Knowledge Note
+- Document
+- Idea
+- Calendar Event
 
 ---
 
-# 9. State Management
+## Data Layer
 
-State is divided into two categories.
+Responsible for storing and retrieving information.
 
-## Server State
+Includes:
 
-Stored in Supabase.
-
-Examples:
-
-- Tasks
-- Clients
-- Finance
+- PostgreSQL
+- Supabase
+- Storage
+- Authentication
+- Row Level Security
 
 ---
 
-## Client State
+# Component Architecture
 
-Managed with Zustand.
+IsraelOS follows reusable components.
 
-Examples:
+Example:
 
-- Sidebar state
-- Theme
-- Filters
-- Current page
+Dashboard
 
----
-
-# 10. API Design
-
-Communication follows this flow:
-
-Frontend
-
-↓
-
-Business Logic
-
-↓
-
-Supabase Client
-
-↓
-
-Database
-
-No direct database access from UI components.
-
----
-
-# 11. Security
-
-Security principles include:
-
-- Authentication required
-- Authorization checks
-- Input validation
-- Environment variables
-- HTTPS only
-- Row-Level Security (RLS)
-- Secure API keys
-
----
-
-# 12. Scalability
-
-IsraelOS is designed to scale.
-
-Future support includes:
-
-- Multiple workspaces
-- Teams
-- Organizations
-- AI integrations
-- Mobile application
+- KPI Card
+- Recent Activity
+- Calendar Widget
+- AI Summary
 - Notifications
-- Integrations with Google Calendar and Gmail
+
+Projects
+
+- Project Card
+- Task List
+- Timeline
+- Files
+
+Businesses
+
+- Business Card
+- Metrics
+- Team Members
+
+Learning
+
+- Course Card
+- Progress Bar
+- Certificates
 
 ---
 
-# 13. Deployment Architecture
+# Routing Strategy
 
-GitHub
+Every major module has its own route.
 
-↓
+Example
 
-Vercel
-
-↓
-
-Production Website
-
-↓
-
-Supabase Backend
-
-Every push to the main branch automatically deploys the latest production version.
-
----
-
-# 14. Development Principles
-
-The project follows these engineering principles:
-
-- Single Responsibility Principle
-- DRY (Don't Repeat Yourself)
-- Reusable Components
-- Feature-based Architecture
-- Type Safety
-- Documentation First
-- Mobile First Design
+/
+ /workspace
+ /projects
+ /businesses
+ /clients
+ /finance
+ /calendar
+ /tasks
+ /goals
+ /learning
+ /knowledge
+ /ideas
+ /documents
+ /ai
+ /settings
 
 ---
 
-# 15. Future Architecture
+# Authentication
+
+Authentication is handled by Supabase Auth.
+
+Supported providers:
+
+- Email & Password
+- Google
+- GitHub
+
+Future providers:
+
+- Microsoft
+- Apple
+
+---
+
+# AI Architecture
+
+AI is a core capability of IsraelOS.
+
+The AI Assistant will interact with:
+
+- Tasks
+- Calendar
+- Goals
+- Projects
+- Knowledge
+- Documents
+- Businesses
+- Learning
+
+Examples:
+
+- Summarize my day
+- Plan my week
+- Explain my notes
+- Suggest priorities
+- Draft emails
+
+---
+
+# Design Philosophy
+
+Every screen should follow these principles:
+
+- Clean
+- Minimal
+- Fast
+- Accessible
+- Professional
+
+Inspired by:
+
+- Linear
+- Notion
+- Vercel
+- Stripe
+- Raycast
+
+---
+
+# Engineering Principles
+
+Every feature should be:
+
+- Modular
+- Reusable
+- Well documented
+- Tested
+- Version controlled
+
+---
+
+# Future Architecture
 
 Future versions may include:
 
-- AI Assistant
-- Voice Commands
-- Mobile App (React Native)
+- Mobile App
+- Desktop App
 - Offline Support
-- Real-time Collaboration
 - Plugin System
+- Marketplace
+- AI Agents
 - Public API
-- Marketplace Integrations
 
 ---
 
-# Conclusion
+# Success Metric
 
-IsraelOS is designed as a scalable, secure, modular, and maintainable software platform.
-
-Every feature added to the application must follow the architecture defined in this document to ensure consistency throughout the project's lifecycle.
+A successful IsraelOS allows users to manage their life, work, learning, businesses, and knowledge from one intelligent operating system.
