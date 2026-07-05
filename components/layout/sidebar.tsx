@@ -1,15 +1,20 @@
 import Link from "next/link";
+
 import {
   LayoutDashboard,
+  LayoutGrid,
+  FolderKanban,
   Building2,
   Users,
-  FileText,
-  Wrench,
   Wallet,
-  Briefcase,
-  Workflow,
+  CalendarDays,
+  CheckSquare,
+  Target,
+  GraduationCap,
+  BookOpen,
+  Lightbulb,
+  FileText,
   Bot,
-  Store,
   Settings,
 } from "lucide-react";
 
@@ -20,24 +25,24 @@ const navigation = [
     icon: LayoutDashboard,
   },
   {
-    name: "Properties",
-    href: "/properties",
+    name: "Workspace",
+    href: "/workspace",
+    icon: LayoutGrid,
+  },
+  {
+    name: "Projects",
+    href: "/projects",
+    icon: FolderKanban,
+  },
+  {
+    name: "Businesses",
+    href: "/businesses",
     icon: Building2,
   },
   {
-    name: "Tenants",
-    href: "/tenants",
+    name: "Clients",
+    href: "/clients",
     icon: Users,
-  },
-  {
-    name: "Leases",
-    href: "/leases",
-    icon: FileText,
-  },
-  {
-    name: "Maintenance",
-    href: "/maintenance",
-    icon: Wrench,
   },
   {
     name: "Finance",
@@ -45,24 +50,44 @@ const navigation = [
     icon: Wallet,
   },
   {
-    name: "CRM",
-    href: "/crm",
-    icon: Briefcase,
+    name: "Calendar",
+    href: "/calendar",
+    icon: CalendarDays,
   },
   {
-    name: "Automation",
-    href: "/automation",
-    icon: Workflow,
+    name: "Tasks",
+    href: "/tasks",
+    icon: CheckSquare,
   },
   {
-    name: "AI",
+    name: "Goals",
+    href: "/goals",
+    icon: Target,
+  },
+  {
+    name: "Learning",
+    href: "/learning",
+    icon: GraduationCap,
+  },
+  {
+    name: "Knowledge",
+    href: "/knowledge",
+    icon: BookOpen,
+  },
+  {
+    name: "Ideas",
+    href: "/ideas",
+    icon: Lightbulb,
+  },
+  {
+    name: "Documents",
+    href: "/documents",
+    icon: FileText,
+  },
+  {
+    name: "AI Assistant",
     href: "/ai",
     icon: Bot,
-  },
-  {
-    name: "Marketplace",
-    href: "/marketplace",
-    icon: Store,
   },
   {
     name: "Settings",
@@ -80,7 +105,7 @@ export function Sidebar() {
         </h1>
 
         <p className="mt-1 text-sm text-slate-400">
-          PropTech System
+          Personal Operating System
         </p>
       </div>
 
