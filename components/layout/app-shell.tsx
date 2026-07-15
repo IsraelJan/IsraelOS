@@ -1,17 +1,54 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Sidebar } from "./sidebar";
 
 interface AppShellProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
-export function AppShell ({ children }: AppShellProps) {
-    return (
-        <div className="flex min-h-screen">
-            <Sidebar />
+export function AppShell({ children }: AppShellProps) {
+  const [collapsed, setCollapsed] = useState(false);
 
-            <main className="flex-1 p-6 bg-slate-50">
-                {children}
-            </main>
-        </div>
+  // Load saved sidebar state
+  useEffect(() => {
+    const savedState = localStorage.getItem("sidebar-collapsed");
+
+    if (savedState !== null) {
+      setCollapsed(JSON.parse(savedState));
+    }
+  }, []);
+
+  // Save sidebar state
+  useEffect(() => {
+    localStorage.setItem(
+      "sidebar-collapsed",
+      JSON.stringify(collapsed)
     );
+  }, [collapsed]);
+
+  return (
+    <div className="min-h-screen bg-slate-50">
+      <Sidebar
+        collapsed={collapsed}
+        setCollapsed={setCollapsed}
+      />
+
+      <main
+        className={`
+          min-h-screen
+          transition-all
+          duration-300
+          p-6
+          ${
+            collapsed
+              ? "ml-24"
+              : "ml-64"
+          }
+        `}
+      >
+        {children}
+      </main>
+    </div>
+  );
 }

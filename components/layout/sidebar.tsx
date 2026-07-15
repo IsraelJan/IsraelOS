@@ -1,6 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 import {
+  PanelLeftClose,
+  PanelLeftOpen,
   LayoutDashboard,
   LayoutGrid,
   FolderKanban,
@@ -96,20 +102,76 @@ const navigation = [
   },
 ];
 
-export function Sidebar() {
-  return (
-    <aside className="w-64 min-h-screen border-r bg-slate-900 text-white">
-      <div className="p-6">
-        <h1 className="text-2xl font-bold tracking-tight">
-          IsraelOS
-        </h1>
+interface SidebarProps {
+  collapsed: boolean;
+  setCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-        <p className="mt-1 text-sm text-slate-400">
-          Personal Operating System
-        </p>
+export function Sidebar({
+  collapsed,
+  setCollapsed,
+}: SidebarProps) {
+  const pathname = usePathname();
+
+  return (
+    <aside
+      className={`
+        fixed
+        left-0
+        top-0
+        z-50
+        flex
+        h-screen
+        flex-col
+        border-r
+        border-slate-800
+        bg-slate-950
+        text-white
+        transition-all
+        duration-300
+        ${collapsed ? "w-24" : "w-64"}
+      `}
+    >
+      {/* Brand */}
+      <div className="border-b border-slate-800 p-4">
+        <div className="flex items-start justify-between">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 text-sm font-bold text-white shadow-lg">
+              IO
+            </div>
+
+            {!collapsed && (
+              <div>
+                <h1 className="text-xl font-bold tracking-tight">
+                  IsraelOS
+                </h1>
+
+                <p className="text-xs text-slate-500">
+                  Personal Operating System
+                </p>
+
+                <p className="mt-1 text-xs font-medium text-blue-400">
+                  Build. Learn. Lead.
+                </p>
+              </div>
+            )}
+          </div>
+
+          <button
+            onClick={() => setCollapsed(!collapsed)}
+            className="rounded-lg p-2 text-slate-400 transition hover:bg-slate-800 hover:text-white"
+          >
+            {collapsed ? (
+              <PanelLeftOpen size={18} />
+            ) : (
+              <PanelLeftClose size={18} />
+            )}
+          </button>
+        </div>
       </div>
 
-      <nav className="px-3">
+      {/* Navigation */}
+      <nav className="flex-1 overflow-y-auto px-3 py-6">
         <ul className="space-y-2">
           {navigation.map((item) => {
             const Icon = item.icon;
@@ -118,17 +180,80 @@ export function Sidebar() {
               <li key={item.name}>
                 <Link
                   href={item.href}
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-colors hover:bg-slate-800"
+                  className={`
+                    flex
+                    items-center
+                    rounded-xl
+                    px-4
+                    py-3
+                    text-sm
+                    font-medium
+                    transition-all
+                    duration-200
+                    ${
+                      collapsed
+                        ? "justify-center"
+                        : "gap-3"
+                    }
+                    ${
+                      pathname === item.href
+                        ? "bg-blue-600 text-white shadow-lg"
+                        : "text-slate-300 hover:bg-slate-800 hover:text-white"
+                    }
+                  `}
                 >
-                  <Icon size={20} />
+                  <Icon size={26} />
 
-                  <span>{item.name}</span>
+                  {!collapsed && (
+                    <span>{item.name}</span>
+                  )}
                 </Link>
               </li>
             );
           })}
         </ul>
       </nav>
+
+      {/* User */}
+      <div className="border-t border-slate-800 p-4">
+        <Link
+          href="/profile"
+          className={`
+            flex
+            items-center
+            rounded-xl
+            p-2
+            transition-all
+            duration-300
+            hover:bg-slate-800
+            ${
+              collapsed
+                ? "justify-center"
+                : "gap-3"
+            }
+          `}
+        >
+          <Image
+            src="/image/profile.png"
+            alt="Israel Jan"
+            width={40}
+            height={40}
+            className="h-10 w-10 rounded-full border-2 border-blue-500 object-cover"
+          />
+
+          {!collapsed && (
+            <div>
+              <p className="text-sm font-medium text-white">
+                Israel Jan
+              </p>
+
+              <p className="text-xs text-slate-400">
+                Software Engineer
+              </p>
+            </div>
+          )}
+        </Link>
+      </div>
     </aside>
   );
 }
