@@ -1,8 +1,8 @@
-# IsraelOS
+#   ARCLINE
 
 > **Build. Learn. Lead.**
 
-IsraelOS is an intelligent Personal Operating System designed to help ambitious professionals organize every aspect of their life, work, businesses, learning, finances, knowledge, and long-term goals from one unified platform.
+ARCLINE is an intelligent Personal Operating System that helps ambitious professionals organize every aspect of their life, work, businesses, learning, finances, knowledge, and long-term goals in one unified platform.
 
 # Build Status
 
